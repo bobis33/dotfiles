@@ -1,0 +1,42 @@
+name: 'CD - Deploy documentation'
+run-name: 'Deploy documentation - "${{ github.ref_name }}"'
+
+permissions:
+  pages: write
+  id-token: write
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  deploy-docs:
+    name: 'Build and deploy rust documentation to github pages'
+    if: github.actor != 'dependabot[bot]'
+    timeout-minutes: 15
+    runs-on: ubuntu-24.04
+    steps:
+      - name: 'Checkout repository'
+        uses: actions/checkout@v6.0.1
+
+      - name: 'Cache cargo'
+        uses: actions/cache@v5.0.3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: doc-${{ hashFiles('**/Cargo.toml') }}
+
+      - name: 'Build documentation'
+        run: cargo doc --no-deps
+
+      - name: 'Upload documentation to GitHub Pages'
+        uses: actions/upload-pages-artifact@v4.0.0
+        with:
+          path: target/doc
+
+      - name: 'Deploy to GitHub Pages'
+        uses: actions/deploy-pages@v4.0.5
