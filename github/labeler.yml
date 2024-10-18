@@ -1,0 +1,25 @@
+client:
+  - changed-files:
+    - any-glob-to-any-file: 'crates/client/**'
+
+server:
+  - changed-files:
+      - any-glob-to-any-file: 'crates/server/**'
+
+ci:
+  - changed-files:
+      - any-glob-to-any-file: '.github/workflows/**'
+  - head-branch: ['ci']
+
+feature:
+  - head-branch: ['feature']
+
+fix:
+  - head-branch: ['fix']
+
+tests:
+  - head-branch: ['tests']
+
+docs:
+  - head-branch: ['docs']
+

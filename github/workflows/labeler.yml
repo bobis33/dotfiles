@@ -1,0 +1,23 @@
+name: 'CI - Labeler'
+run-name: 'Labeler - "${{ github.ref_name }}"'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+on:
+  pull_request:
+    branches: [ "**" ]
+
+jobs:
+  labeler:
+    name: 'Label pull request'
+    if: github.actor != 'dependabot[bot]'
+    timeout-minutes: 15
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: 'Label pull request'
+        uses: actions/labeler@v6.0.1
