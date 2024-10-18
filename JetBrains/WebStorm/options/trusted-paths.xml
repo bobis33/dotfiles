@@ -1,0 +1,18 @@
+<application>
+  <component name="Trusted.Paths">
+    <option name="TRUSTED_PROJECT_PATHS">
+      <map>
+      </map>
+    </option>
+  </component>
+  <component name="Trusted.Paths.Settings">
+    <option name="TRUSTED_PATHS">
+      <list>
+        <option value="$USER_HOME$/Documents/Projects" />
+        <option value="$USER_HOME$/Documents/EFREI" />
+        <option value="$USER_HOME$/Documents" />
+        <option value="$USER_HOME$/Downloads" />
+      </list>
+    </option>
+  </component>
+</application>

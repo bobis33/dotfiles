@@ -1,0 +1,6 @@
+GLSL
+com.jetbrains.space
+com.intellij.ml.llm
+org.intellij.prisma
+com.github.copilot
+mobi.hsz.idea.gitignore
